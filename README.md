@@ -11,9 +11,8 @@ npm install
 npm run dev
 ```
 
-Abre em http://localhost:3000. Não precisa de chave de API nem de `.env`: os
-tiles vêm do Google e a geocodificação usa o Nominatim. Leia as limitações
-conhecidas antes de publicar isto em algum lugar.
+Abre em http://localhost:3000. Não precisa de chave de API nem de `.env`: o mapa
+usa tiles do OpenStreetMap e a geocodificação usa o Nominatim, ambos públicos.
 
 ## Scripts
 
@@ -63,13 +62,10 @@ Imports usam o alias `@/` apontando para `src/`.
 
 ## Limitações conhecidas
 
-Os tiles saem de `mt0-3.google.com/vt`, endpoint interno do Google. O
+Em `Mapa.tsx` há um `<TileLayer>` do Google comentado. Não descomente para
+publicar: `mt0-3.google.com/vt` é endpoint interno, e o
 [ToS do Maps Platform](https://cloud.google.com/maps-platform/terms) §3.2.3(a)
-lista "bulk download Google Maps tiles" como uso proibido. Está assim de
-propósito, pelos POIs, enquanto o projeto roda local — antes de publicar, troque
-a `url` do `<TileLayer>` por CARTO Voyager
-(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`,
-grátis) ou pela API oficial, que exige chave e faturamento.
+lista "bulk download Google Maps tiles" como uso proibido.
 
 Os pontos ficam em `data/pontos.json`, lido e reescrito a cada cadastro, sem
 lock. Dois cadastros no mesmo instante podem se sobrescrever, e em hospedagem

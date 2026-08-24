@@ -26,11 +26,17 @@ export default function Mapa({ pontos }: { pontos: Ponto[] }) {
         // topo esquerdo e do titulo, base direita e do botao de cadastro
         position="topright"
       />
-      <TileLayer
+      
+      {/* <TileLayer
         attribution="Map data &copy;2026 Google"
         url="https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}"
         subdomains={["mt0", "mt1", "mt2", "mt3"]}
         maxZoom={20}
+      /> */}
+      <TileLayer
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+        maxZoom={19}
       />
       {pontos.map((ponto) => (
         <PontoNoMapa key={ponto.id} ponto={ponto} />
