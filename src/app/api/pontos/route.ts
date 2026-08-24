@@ -7,6 +7,8 @@ export async function POST(request: Request) {
   const { nome, endereco, tiposAceitos, horario } = body;
 
   // valida antes de geocodificar: evita chamada externa para corpo incompleto
+  // 422 e nao 400: o corpo veio certo, o endereco e que nao existe no mapa
+
   if (!nome || !endereco || !tiposAceitos?.length) {
     return NextResponse.json(
       { erro: "Preencha nome, endereço e ao menos um tipo aceito." },
@@ -16,7 +18,6 @@ export async function POST(request: Request) {
 
   const coordenadas = await geocodificar(endereco);
   if (!coordenadas) {
-    // 422 e nao 400: o corpo veio certo, o endereco e que nao existe no mapa
     return NextResponse.json(
       { erro: "Não encontramos esse endereço, tente ser mais específico." },
       { status: 422 }

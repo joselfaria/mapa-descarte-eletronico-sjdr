@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mapa de Descarte Eletrônico — SJDR",
+  title: "Mapa de Descarte Eletrônico SJDR",
   description: "Pontos de coleta de lixo eletrônico em São João del-Rei",
 };
 
