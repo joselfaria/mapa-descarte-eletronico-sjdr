@@ -59,19 +59,3 @@ Imports usam o alias `@/` apontando para `src/`.
 | Logo no canto da tela | `public/reeevida-logo.jpg`, dimensionado em `src/app/page.tsx` |
 | Cores e sombras do design | `src/app/globals.css` → `@theme inline` |
 | Cores de fundo e texto | `src/app/globals.css` → `:root` |
-
-## Limitações conhecidas
-
-Em `Mapa.tsx` há um `<TileLayer>` do Google comentado. Não descomente para
-publicar: `mt0-3.google.com/vt` é endpoint interno, e o
-[ToS do Maps Platform](https://cloud.google.com/maps-platform/terms) §3.2.3(a)
-lista "bulk download Google Maps tiles" como uso proibido.
-
-Os pontos ficam em `data/pontos.json`, lido e reescrito a cada cadastro, sem
-lock. Dois cadastros no mesmo instante podem se sobrescrever, e em hospedagem
-com sistema de arquivos efêmero (Vercel, por exemplo) as gravações se perdem no
-próximo deploy. Trocar por um banco quando o volume justificar.
-
-O visual do modal segue o frame "create project modal" do arquivo
-[Modal Templates | Forms + Tables](https://www.figma.com/design/4asPZ5A4OKvJyCGW2sL2Sr/Modal-Templates-%7C-Forms---Tables--Community-?node-id=0-1)
-no Figma. As cores e sombras de lá viraram variáveis no `@theme` do `globals.css`.
